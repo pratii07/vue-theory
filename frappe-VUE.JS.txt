@@ -1,0 +1,68 @@
+<template>
+  <!-- <div> -->
+    <!-- <div id="app">{{ message }}</div>
+    <p>{{ data.count }}</p> -->
+    <!-- <button @click="increment">Increment</button>
+    <button @click="dec">Decrement</button>
+    <button @click="reset">Reset</button> -->
+<!-- </div> -->
+<div>
+    <form @submit.prevent="createtodo">
+        <label for="todo-description">Description</label>
+        <input v-model="data.todoDescription" type="text" id="todo-description">
+
+        <input type="submit" value="Create">
+    </form>
+    <pre>{{ data.todoDescription }}</pre>
+    <ol>
+      <li v-for="(todo, index) in data.todos" :key="index"> {{  todo  }} 
+      <button @click="deletebtn">Delete</button></li>
+    </ol>
+  </div>
+</template>
+
+<script>
+import { reactive } from "vue";
+
+export default {
+  setup() {
+    const data = reactive({
+      todos: [],
+      todoDescription: ""
+    });
+
+    function createtodo(){
+      if (data.todoDescription.trim()) { 
+        data.todos.push(data.todoDescription);
+        data.todoDescription = ""; 
+      }
+
+    }
+
+    function deletebtn(index){
+      data.todos.splice(index, 1);
+    }
+    return { data, createtodo, deletebtn };
+  }
+};
+</script>
+
+<!-- <script setup>
+import { reactive } from "vue"
+
+const data = reactive({
+  count: 0
+})
+
+function increment() {
+  data.count++;
+}
+function dec() {
+  data.count--;
+}
+function reset() {
+  data.count = 0;
+}
+   
+</script> -->
+

@@ -1,0 +1,10 @@
+Backend: Python (Flask)– Core business logic, API development
+ Frontend: JavaScript (ES6), Vue.js, Jinja2 – UI rendering, templating, dynamic components
+ Database: MariaDB / MySQL – Relational database for structured data
+ Caching: Redis – Caching and job queue management
+ ORM: Frappe ORM – Database abstraction and models
+ Authentication: OAuth2, JWT, LDAP – User authentication and SSO
+ Background Jobs: Celery, Redis Queue – Asynchronous task processing
+ Search: Elasticsearch, Full-Text Search – Advanced search capabilities
+ Deployment: Docker, Kubernetes, Frappe Bench – Hosting and scalability
+ Version Control: Git – Code collaboration and tracking

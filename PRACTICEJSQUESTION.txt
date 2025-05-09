@@ -1,0 +1,43 @@
+<template>
+  <h4>PRATEEKSHA</h4>
+  <div v-if="data">
+    <ul>
+      <!-- <li v-for="item in data" :key="item.id">
+          {{ item.name }} 
+          {{ item.brand }} 
+          <img v-bind:src="item.image" alt="photuuuuu">
+      </li> -->
+      <Item></Item>
+      <Item></Item>
+      <Item></Item>
+
+    </ul>
+    <!-- <pre>{{ JSON.stringify(data, null, 2) }}</pre> -->
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import Item from './Item.vue';
+const data = ref(null);
+
+const ApiUrl = `http://site1.local:8000/api/v2/document/Vehicle?fields=["brand","image"]`;
+
+fetch(ApiUrl, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "token 483ee347c0fa0f9:427b7da01019459", // Replace with valid API key
+  },
+})
+.then((d)=> d.json())
+.then((msg) => {
+  // data.value = msg;
+  data.value=msg.data;
+  // console.log("Data inside response:", msg.data); // Data field ko check karo
+  console.log("Data image:", msg.image); // Data field ko check karo
+
+})
+
+</script>
+
